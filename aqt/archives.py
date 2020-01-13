@@ -45,6 +45,54 @@ class QtPackage:
         self.has_mirror = has_mirror
 
 
+class PackagesList:
+    """
+        Hold packages list information.
+    """
+
+    BASE_URL = 'https://download.qt.io/online/qtsdkrepository/'
+
+    def __init__(self, version):
+        self.version = version
+        for os_name in ('windows', 'linux', 'osx'):
+            self._get_archives(os_name)
+
+    def _get_archives(self, os_name):
+        qt_ver_num = self.version.replace(".", "")
+
+        # Get packages index
+        archive_path = "{0}{1}{2}/qt5_{3}/".format(os_name, '_x86/' if self.os_name == 'windows' else '_x64/',
+                                                     self.target, qt_ver_num)
+        update_xml_url = "{0}{1}Updates.xml".format(self.BASE_URL, archive_path)
+        archive_url = "{0}{1}".format(self.base, archive_path)
+        target_packages = []
+        target_packages.append("qt.qt5.{}.{}".format(qt_ver_num, self.arch))
+        target_packages.append("qt.{}.{}".format(qt_ver_num, self.arch))
+        target_packages.extend(self.mod_list)
+        try:
+            r = requests.get(update_xml_url)
+        except requests.exceptions.ConnectionError as e:
+            self.logger.error('Download error: %s\n' % e.args, exc_info=True)
+            raise e
+        else:
+            self.update_xml = ElementTree.fromstring(r.text)
+            for packageupdate in self.update_xml.iter("PackageUpdate"):
+                name = packageupdate.find("Name").text
+                if self.all_extra or name in target_packages:
+                    if packageupdate.find("DownloadableArchives").text is not None:
+                        downloadable_archives = packageupdate.find("DownloadableArchives").text.split(", ")
+                        full_version = packageupdate.find("Version").text
+                        package_desc = packageupdate.find("Description").text
+                        for archive in downloadable_archives:
+                            package_url = archive_url + name + "/" + full_version + archive
+                            self.archives.append(QtPackage(name, package_url, archive, package_desc,
+                                                           has_mirror=self.has_mirror))
+        if len(self.archives) == 0:
+            self.logger.error("Error while parsing package information!")
+            exit(1)
+
+
+
 class QtArchives:
     """Hold Qt archive packages list."""
 

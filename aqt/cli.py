@@ -28,7 +28,7 @@ import sys
 
 from packaging.version import Version, parse
 
-from aqt.archives import QtArchives, ToolArchives
+from aqt.archives import PackagesList, QtArchives, ToolArchives
 from aqt.installer import QtInstaller
 from aqt.settings import Settings
 
@@ -141,6 +141,11 @@ class Cli():
 
     def run_list(self, args):
         print('List Qt packages for %s' % args.qt_version)
+        pl = PackagesList(args.qt_version)
+        for ptype, plist in pl:
+            print(format(' - type: %s', ptype))
+            for name in plist:
+                print(name)
 
     def show_help(self, args):
         self.parser.print_help()
