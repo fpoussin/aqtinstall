@@ -32,7 +32,7 @@ jobs:
           platform = "${{ matrix.os }}"
           qtver = "${{ matrix.qtver }}"
           if platform == "windows-latest":
-            args = [qtver, "windows", "desktop", "win64_mingw73"]
+            args = [qtver, "windows", "desktop", "win64_msvc2019_64"]
           elif platform == "macOS-latest":
             args = [qtver, "mac", "desktop", "clang_64"]
           else:
