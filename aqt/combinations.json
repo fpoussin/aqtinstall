@@ -33,6 +33,7 @@
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_maintainance", "arch": "qt.tools.maintainance"},
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_qt3dstudio", "arch": "qt.tools.qt3dstudio"},
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_qtcreator", "arch": "qt.tools.qtcreator"},
+  {"os_name": "linux",   "target": "desktop", "tool_name": "tools_qtcreatordev", "arch": "qt.tools.qtcreatordev"},
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_telemetry", "arch": "qt.tools.qtcreator.telemetry"},
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_openssl_x64",  "arch":"qt.tools.openssl.gcc_64"},
   {"os_name": "linux",   "target": "desktop", "tool_name": "tools_openssl_src",  "arch":"qt.tools.openssl"},
@@ -42,6 +43,7 @@
   {"os_name": "mac",     "target": "desktop", "tool_name": "tools_maintainance", "arch": "qt.tools.maintainance"},
   {"os_name": "mac",     "target": "desktop", "tool_name": "tools_qt3dstudio", "arch": "qt.tools.qt3dstudio"},
   {"os_name": "mac",     "target": "desktop", "tool_name": "tools_qtcreator", "arch": "qt.tools.qtcreator"},
+  {"os_name": "mac",     "target": "desktop", "tool_name": "tools_qtcreatordev", "arch": "qt.tools.qtcreatordev"},
   {"os_name": "mac",     "target": "desktop", "tool_name": "tools_telemetry", "arch": "qt.tools.qtcreator.telemetry"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_openssl_x64", "arch": "qt.tools.openssl.win_x64"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_openssl_x86", "arch": "qt.tools.openssl.win_x86"},
@@ -66,6 +68,7 @@
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_mingw", "arch": "qt.tools.mingw47"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_maintainance", "arch": "qt.tools.maintainance"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_qtcreator", "arch": "qt.tools.qtcreator"},
+  {"os_name": "windows", "target": "desktop", "tool_name": "tools_qtcreatordev", "arch": "qt.tools.qtcreatordev"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_qt3dstudio", "arch": "qt.tools.qt3dstudio"},
   {"os_name": "windows", "target": "desktop", "tool_name": "tools_telemetry", "arch": "qt.tools.qtcreator.telemetry"}
 ], "modules": [
